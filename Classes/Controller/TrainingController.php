@@ -21,6 +21,13 @@ namespace BYR\PortfolioByr\Controller;
  */
 class TrainingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+     /**
+     * trainingRepository
+     * 
+     * @var \BYR\PortfolioByr\Domain\Repository\TrainingRepository
+     * @inject
+     */
+    protected $trainingRepository = null;
     /**
      * action list
      * 
