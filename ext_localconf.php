@@ -36,7 +36,7 @@ call_user_func(
             'BYR.PortfolioByr',
             'Project',
             [
-                'Project' => 'list, show, highlight, skills'
+                'Projet' => 'list, show, highlight, skills'
             ],
             // non-cacheable actions
             [
