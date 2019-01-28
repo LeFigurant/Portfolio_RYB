@@ -17,7 +17,7 @@
 
 		<f:flashMessages />
 
-		<table  class="tx_portfoliobyr" >
+		<!--<table  class="tx_portfoliobyr" >
 			<tr>
 				<th><f:translate key="tx_portfoliobyr_domain_model_projet.title" /></th>
 				<th><f:translate key="tx_portfoliobyr_domain_model_projet.description" /></th>
@@ -27,21 +27,17 @@
 				<th><f:translate key="tx_portfoliobyr_domain_model_projet.date_end" /></th>
 				<th> </th>
 				<th> </th>
-			</tr>
-
+			</tr>-->
+			<f:widget.paginate objects="{projets}" as="pag_projets">
 			<f:for each="{projets}" as="projet">
-				<tr>
-					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.title}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.description}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.photo.originalResource.name}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.url}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.dateStart -> f:format.date()}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.dateEnd -> f:format.date()}</f:link.action></td>
-					<td><f:link.action action="edit" arguments="{projet : projet}">Edit</f:link.action></td>
-					<td><f:link.action action="delete" arguments="{projet : projet}">Delete</f:link.action></td>
-				</tr>
+				<div>
+					<h2>{projet.title}</h2>
+					<f:format.html>{projet.description}</f:format.html>
+					<f:link.action class="btn btn-primary" action="show" arguments="{projet : projet}">Voir</f:link.action>
+				</div>
 			</f:for>
-		</table>
+		</f:widget.paginate>
+		<!--</table>-->
 
 		<f:link.action action="new">New Projet</f:link.action>
 	</f:section>

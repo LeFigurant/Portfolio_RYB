@@ -16,12 +16,14 @@
 		<h1>Listing for Training</h1>
 
 		<f:flashMessages />
-
-		<f:for each="{trainings}" as="training">
+		
+		<f:widget.paginate objects="{trainings}" as="pag_trainings">
+		<f:for each="{pag_trainings}" as="training">
 
 		<f:render partial="Training/Properties" arguments="{training:training}" />
 
 		</f:for>
+		</f:widget.paginate>
 
 		<!--<table  class="tx_portfoliobyr" >
 			<tr>

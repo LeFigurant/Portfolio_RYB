@@ -1,46 +1,19 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<table class="tx-portfolio-byr" >
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_projet.title" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_projet.description" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_projet.photo" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_projet.url" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_projet.date_start" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_projet.date_end" />
-		</td>
-		<td>
-		</td>
-	</tr>
-</table>
+<div>
+	<h2>{projet.title}</h2>
+	<f:format.html>{projet.description}</f:format.html>
+	<f:image image="{projet.photo}" />
+	<p><a class="btn btn-primary" href="{projet.url}">Go!</a></p>
+	<p>Du <f:format.date>{projet.dateStart}</f:format.date> au <f:format.date>{projet.dateEnd}</f:format.date></p>
+	<!--<tr>
+					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.title}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.description}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.photo.originalResource.name}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.url}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.dateStart -> f:format.date()}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{projet : projet}"> {projet.dateEnd -> f:format.date()}</f:link.action></td>
+					<td><f:link.action action="edit" arguments="{projet : projet}">Edit</f:link.action></td>
+					<td><f:link.action action="delete" arguments="{projet : projet}">Delete</f:link.action></td>
+				</tr>-->
+</div>
 </html>

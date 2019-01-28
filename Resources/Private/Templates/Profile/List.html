@@ -25,7 +25,9 @@
 				<th> </th>
 		</tr>
 	</table>-->
-		<f:for each="{profiles}" as="profile">
+		
+		<f:widget.paginate objects="{profiles}" as="pag_profiles">
+		<f:for each="{pag_profiles}" as="profile">
 		<f:render partial="Profile/Properties" arguments="{profile:profile}" />
 		<ul>
 			<li><f:link.action action="show" arguments="{profile : profile}">Voir le profile</f:link.action></li>
@@ -33,6 +35,7 @@
 			<li><f:link.action action="delete" arguments="{profile : profile}">Delete</f:link.action></li>
 		</ul>
 		</f:for>
+		</f:widget.paginate>
 	
 	<f:link.action action="new">New Profile</f:link.action>
 	</f:section>
