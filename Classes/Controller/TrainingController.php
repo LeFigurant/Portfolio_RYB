@@ -42,10 +42,10 @@ class TrainingController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * action show
      * 
-     * @param \CS\PortfolioCs\Domain\Model\Training $training
+     * @param \BYR\PortfolioByr\Domain\Model\Training $training
      * @return void
      */
-    public function showAction(\CS\PortfolioCs\Domain\Model\Training $training)
+    public function showAction(\BYR\PortfolioByr\Domain\Model\Training $training)
     {
         $this->view->assign('training', $training);
     }

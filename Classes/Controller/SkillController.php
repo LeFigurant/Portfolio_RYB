@@ -24,10 +24,10 @@ class SkillController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * action show
      * 
-     * @param \CS\PortfolioCs\Domain\Model\Skill $skill
+     * @param \BYR\PortfolioByr\Domain\Model\Skill $skill
      * @return void
      */
-    public function showAction(\CS\PortfolioCs\Domain\Model\Skill $skill)
+    public function showAction(\BYR\PortfolioByr\Domain\Model\Skill $skill)
     {
         $this->view->assign('skill', $skill);
     }

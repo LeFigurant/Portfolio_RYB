@@ -35,6 +35,6 @@
     },
     "replace": {
         "portfolio_byr": "self.version",
-        "typo3-ter/portfolio-byr": "self.version"
+        "byr/portfolio-byr": "self.version"
     }
 }
