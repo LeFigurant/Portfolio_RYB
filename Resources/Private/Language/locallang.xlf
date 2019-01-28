@@ -82,7 +82,7 @@
 				<source>Degree</source>
 			</trans-unit>
 			<trans-unit id="tx_portfoliobyr_domain_model_training.lication">
-				<source>Lication</source>
+				<source>Location</source>
 			</trans-unit>
 			<trans-unit id="tx_portfoliobyr_domain_model_training.title">
 				<source>Title</source>

@@ -1,60 +1,25 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <table class="tx-portfolio-byr" >
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_profile.name" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_profile.lastname" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_profile.birth_day" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_profile.driving_licence" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_profile.phone" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_profile.mail" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_profile.address" />
-		</td>
-		<td>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_portfoliobyr_domain_model_profile.photo" />
-		</td>
-		<td>
-		</td>
-	</tr>
+<div>
+	<h2>{profile.name} {profile.lastname}</h2>
+	<f:image image="{profile.photo}" />
+	<ul>
+		<li>Né le {profile.birthDay -> f:format.date()}</li>
+		<li>
+			<f:if condition="{profile.drivingLicence}">
+			<f:then>
+			Sait conduire!
+			</f:then>
+			<f:else>
+			Ne sait pas conduire.
+			</f:else>
+			</f:if>
+		</li>
+		<li>Téléphone: {profile.phone}</li>
+		<li>Mail: <a href="mailto:{profile.mail}" target="_top">{profile.mail}</a></li>
+		<li>Addresse: {profile.address}</li>
+	</ul>
+	<!--<td><f:link.action action="show" arguments="{profile : profile}"> {profile.photo.originalResource.name}</f:link.action></td>-->
+</div>
 </table>
 </html>

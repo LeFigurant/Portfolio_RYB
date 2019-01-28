@@ -1,10 +1,19 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <table class="tx-portfolio-byr" >
-	<tr>
+<div>
+	<h2>{training.domain}</h2>
+	<ul>
+		<li>
+			Du <f:format.date>{training.dateStart}</f:format.date> au <f:format.date>{training.dateEnd}</f:format.date>
+		</li>
+	</ul>
+</div>
+	<!--<tr>
 		<td>
 			<f:translate key="tx_portfoliobyr_domain_model_training.domain" />
 		</td>
 		<td>
+			<f:format.raw>{training.domain}</f:format.raw>
 		</td>
 	</tr>
 	<tr>
@@ -12,6 +21,7 @@
 			<f:translate key="tx_portfoliobyr_domain_model_training.date_start" />
 		</td>
 		<td>
+			<f:format.date>{training.dateStart}</f:format.date>
 		</td>
 	</tr>
 	<tr>
@@ -19,6 +29,7 @@
 			<f:translate key="tx_portfoliobyr_domain_model_training.date_end" />
 		</td>
 		<td>
+			<f:format.date>{training.dateEnd}</f:format.date>
 		</td>
 	</tr>
 	<tr>
@@ -26,6 +37,7 @@
 			<f:translate key="tx_portfoliobyr_domain_model_training.degree" />
 		</td>
 		<td>
+			<f:format.raw>{training.degree}</f:format.raw>
 		</td>
 	</tr>
 	<tr>
@@ -48,6 +60,6 @@
 		</td>
 		<td>
 		</td>
-	</tr>
+	</tr>-->
 </table>
 </html>
