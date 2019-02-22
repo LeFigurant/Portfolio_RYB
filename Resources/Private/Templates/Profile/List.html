@@ -1,42 +1,48 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
-	This Template is responsible for creating a table of domain objects.
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	Resources:
-	Private:
-	Templates:
-	List.html: keep
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-	<f:section name="content">
-	<h1>Listing for Profile</h1>
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+	<h1>Liste des profils</h1>
 	<f:flashMessages />
-	<!--<table  class="tx_portfoliobyr" >
-		<tr>
-				<th><f:translate key="tx_portfoliobyr_domain_model_profile.name" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_profile.lastname" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_profile.birth_day" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_profile.driving_licence" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_profile.phone" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_profile.mail" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_profile.address" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_profile.photo" /></th>
-				<th> </th>
-				<th> </th>
-		</tr>
-	</table>-->
-		
-		<f:widget.paginate objects="{profiles}" as="pag_profiles">
-		<f:for each="{pag_profiles}" as="profile">
-		<f:render partial="Profile/Properties" arguments="{profile:profile}" />
-		<ul>
-			<li><f:link.action action="show" arguments="{profile : profile}">Voir le profile</f:link.action></li>
-			<li><f:link.action action="edit" arguments="{profile : profile}">Edit</f:link.action></li>
-			<li><f:link.action action="delete" arguments="{profile : profile}">Delete</f:link.action></li>
-		</ul>
-		</f:for>
-		</f:widget.paginate>
-	
-	<f:link.action action="new">New Profile</f:link.action>
-	</f:section>
+	<f:widget.paginate objects="{profiles}" as="paginatedProfiles" configuration="{itemsPerPage: 6, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}">
+
+		<div class="row">
+			<f:for each="{paginatedProfiles}" as="profile">
+
+				<div class="col-md-4 col-sm-6">
+					<f:link.action action="show" arguments="{profile : profile}">
+						<div class="card m-3 p-3 bg-light">
+							<h2 class="text-center text-primary">
+								{profile.lastName} {profile.firstname}
+							</h2>
+							<f:if condition="{profile.photo}">
+								<f:image treatIdAsReference="1" image="{profile.photo}" width="100c" maxHeight="100" />
+							</f:if>
+							<div class="row">
+								<div class="col-12 col-lg-6 text-center">
+									<span class="badge badge-info rounded"> {profile.phone}</span>
+								</div>
+								<div class="col-12 col-lg-6 text-center">
+									<span class="badge badge-secondary rounded"> {profile.email}</span>
+								</div>
+							</div>
+						</div>
+					</f:link.action>
+				</div>
+			</f:for>
+		</div>
+	</f:widget.paginate>
+</f:section>
+
 </html>

@@ -1,23 +1,84 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
+<f:layout name="Default" />
 
-	This Template is responsible for displaying a single view for a domain object
+This Template is responsible for displaying a single view for a domain object
 
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	  Resources:
-		Private:
-		  Templates:
-			Show.html: keep
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Show.html: keep
 
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
-	<f:section name="content">
-		<h1>Single View for Profile</h1>
+<f:section name="content">
+	<h1>Profil de {profile.firstname} {profile.lastname}</h1>
+	<f:flashMessages />
 
-		<f:flashMessages />
-		<f:render partial="Profile/Properties" arguments="{profile:profile}" />
-		<f:link.action action="list">Back to list</f:link.action><br />
-		<f:link.action action="new">New Profile</f:link.action>
-	</f:section>
+	<div class="row">
+		<div class="col-md-6 border-right col-12">
+			<div class="m-3">
+
+				<f:if condition="{profile.Birthdate}">
+					<f:then>
+						<h5>Date de naissance : <b class="badge badge-success rounded">{profile.Birthdate -> f:format.date()}</b></h5>
+					</f:then>
+					<f:else>
+						<h5>Date de naissance : <b class="badge badge-danger rounded">{profile.Birthdate -> f:format.date()}</b></h5>
+					</f:else>
+				</f:if>
+
+				<f:if condition="{profile.DrivingLicense}">
+					<h5>Dispose du permis : <i class="glyphicon glyphicon-ok"></i> </h5>
+				</f:if>
+
+				<f:if condition="{profile.phone}">
+					<f:then>
+						<h5>Numéro de téléphone : <b class="badge badge-success rounded">{profile.phone}</b></h5>
+					</f:then>
+					<f:else>
+						<h5>Numéro de téléphone : <b class="badge badge-danger rounded">{profile.phone}Non renseigné</b></h5>
+					</f:else>
+				</f:if>
+
+				<f:if condition="{profile.email}">
+					<f:then>
+						<h5>Email : <b class="badge badge-success rounded">{profile.email}</b></h5>
+					</f:then>
+					<f:else>
+						<h5>Email : <b class="badge badge-danger rounded">{profile.email}Non renseigné</b></h5>
+					</f:else>
+				</f:if>
+
+				<f:if condition="{profile.address}">
+					<f:then>
+						<h5>Adresse : <b class="badge badge-success rounded">{profile.address}</b></h5>
+					</f:then>
+					<f:else>
+						<h5>Adresse : <b class="badge badge-danger rounded">{profile.address}Non renseigné</b></h5>
+					</f:else>
+				</f:if>
+			</div>
+		</div>
+
+		<div class="col-md-6 col-12">
+			<div class="m-3">
+				<h2 class="text-primary">Projets</h2>
+				<f:for each="{profile.projects}" as="project">
+					<div class="border-top m-1 p-2">
+						<h5>{project.title}</h5>
+						<h5>Du <b class="text-info">{project.DateStart -> f:format.date()} </b> au <b class="text-info">{project.DateEnd
+								-> f:format.date()}</b></h5>
+						<f:format.html> <i> {project.description} </i> </f:format.html>
+					</div>
+				</f:for>
+			</div>
+
+		</div>
+	</div>
+
+	<f:link.action class="btn btn-info rounded" action="list">Retour</f:link.action><br />
+</f:section>
+
 </html>

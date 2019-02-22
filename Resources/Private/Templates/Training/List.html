@@ -14,45 +14,41 @@
 
 	<f:section name="content">
 		<h1>Listing for Training</h1>
+		<f:form action="search" name="search" object="{search}">
+			<f:form.textfield property="keyword" id="keyword" placeholder="Nom"/>
+			<f:form.textfield property="domain" id="domain" placeholder="Domaine"/>
+			<f:form.textfield property="location" id="location" placeholder="Location"/>
+			<f:form.textfield property="degree" id="degree" placeholder="Degres"/>
+			<f:form.textfield type="date" property="started_date" id="started_date" placeholder="Debut"/>
+			<f:form.textfield type="date" property="finished_date" id="finished_date" placeholder="Fin"/>
+			<f:form.submit value="OK" />
+		</f:form>
 
 		<f:flashMessages />
-		
-		<f:widget.paginate objects="{trainings}" as="pag_trainings">
-		<f:for each="{pag_trainings}" as="training">
 
-		<f:render partial="Training/Properties" arguments="{training:training}" />
-
-		</f:for>
-		</f:widget.paginate>
-
-		<!--<table  class="tx_portfoliobyr" >
-			<tr>
-				<th><f:translate key="tx_portfoliobyr_domain_model_training.domain" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_training.date_start" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_training.date_end" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_training.degree" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_training.lication" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_training.title" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_training.description" /></th>
-				<th> </th>
-				<th> </th>
-			</tr>
-
+		<table  class="tx_portfolioanal" >
 			<f:for each="{trainings}" as="training">
+
 				<tr>
-					<td><f:link.action action="show" arguments="{training : training}"> {training.domain}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{training : training}"> {training.dateStart -> f:format.date()}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{training : training}"> {training.dateEnd -> f:format.date()}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{training : training}"> {training.degree}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{training : training}"> {training.lication}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{training : training}"> {training.title}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{training : training}"> {training.description}</f:link.action></td>
-					<td><f:link.action action="edit" arguments="{training : training}">Edit</f:link.action></td>
-					<td><f:link.action action="delete" arguments="{training : training}">Delete</f:link.action></td>
+					<div class="card" style="width: 18rem; border: 1px solid darkgrey; padding: 2rem;">
+						<div class="card-body">
+							<h5>Domaine</h5>
+							<p class="card-text">
+								{training.domain}
+							</p>
+							<h5>Diplôme obtenu</h5>
+							<p class="card-text">
+								{training.degree}
+							</p>
+							<h5>Description</h5>
+							<p class="card-text">
+								{training.description}
+							</p>
+							<f:link.action class="btn btn-primary" action="show" arguments="{training : training}">Plus d'infos</f:link.action>
+						</div>
+					</div>
 				</tr>
 			</f:for>
-		</table>-->
-
-		<f:link.action action="new">New Training</f:link.action>
+		</table>
 	</f:section>
 </html>

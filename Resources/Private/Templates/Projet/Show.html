@@ -1,23 +1,71 @@
-<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
-
-	This Template is responsible for displaying a single view for a domain object
-
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	  Resources:
-		Private:
-		  Templates:
-			Show.html: keep
-
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
-	<f:section name="content">
-		<h1>Single View for Projet</h1>
-
-		<f:flashMessages />
-		<f:render partial="Projet/Properties" arguments="{projet:projet}" />
-		<f:link.action action="list">Back to list</f:link.action><br />
-		<f:link.action action="new">New Projet</f:link.action>
-	</f:section>
+<html data-namespace-typo3-fluid="true" xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+    <f:layout name="Default"/>
+    This Template is responsible for displaying a single view for a domain object
+        
+        	If you modify this template, do not forget to change the overwrite settings
+        	in /Configuration/ExtensionBuilder/settings.yaml:
+        	  Resources:
+        		Private:
+        		  Templates:
+        			Show.html: keep
+        
+        	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+    <f:section name="content">
+        <h1>Single View for Project</h1>
+        <f:flashMessages/>
+        <f:render arguments="{project:project}" partial="Project/Properties"/>
+        <f:link.action action="list">Back to list</f:link.action><br/>
+        <f:link.action action="new">New Project</f:link.action>
+    </f:section>
+    <f:section name="content">
+        <h1>Projet : {project.title}</h1>
+        <f:flashMessages/>
+        <div class="row">
+            <div class="col-md-6 border-right col-12">
+                <div class="m-3">
+                    <f:if condition="{project.dateStart}">
+                        <f:then>
+                            <h5>Date de début :
+                                <b class="badge badge-success rounded">{project.dateStart -> f:format.date()}</b>
+                            </h5>
+                        </f:then>
+                        <f:else>
+                            <h5>Date de début :
+                                <b class="badge badge-danger rounded">{project.dateStart -> f:format.date()}</b>
+                            </h5>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{project.dateEnd}">
+                        <f:then>
+                            <h5>Date de fin :
+                                <b class="badge badge-success rounded">{project.dateEnd -> f:format.date()}</b>
+                            </h5>
+                        </f:then>
+                        <f:else>
+                            <h5>Date de fin :
+                                <b class="badge badge-danger rounded">{project.dateEnd -> f:format.date()}</b>
+                            </h5>
+                        </f:else>
+                    </f:if>
+                    <f:if condition="{project.url}">
+                        <h5>Site de la société : {project.url}
+                        </h5>
+                    </f:if>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="m-3">
+                    <h2 class="text-primary">Description</h2>
+                    <span>
+                        <f:format.html>
+                            <i>
+                                {project.description}
+                            </i>
+                        </f:format.html>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <f:link.action action="list" class="btn btn-info rounded">Retour</f:link.action><br/>
+    </f:section>
 </html>

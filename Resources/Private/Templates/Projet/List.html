@@ -1,44 +1,47 @@
-<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
-
-	This Template is responsible for creating a table of domain objects.
-
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	  Resources:
-		Private:
-		  Templates:
-			List.html: keep
-
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
-	<f:section name="content">
-		<h1>Listing for Projet</h1>
-
-		<f:flashMessages />
-
-		<!--<table  class="tx_portfoliobyr" >
-			<tr>
-				<th><f:translate key="tx_portfoliobyr_domain_model_projet.title" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_projet.description" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_projet.photo" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_projet.url" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_projet.date_start" /></th>
-				<th><f:translate key="tx_portfoliobyr_domain_model_projet.date_end" /></th>
-				<th> </th>
-				<th> </th>
-			</tr>-->
-			<f:widget.paginate objects="{projets}" as="pag_projets">
-			<f:for each="{projets}" as="projet">
-				<div>
-					<h2>{projet.title}</h2>
-					<f:format.html>{projet.description}</f:format.html>
-					<f:link.action class="btn btn-primary" action="show" arguments="{projet : projet}">Voir</f:link.action>
-				</div>
-			</f:for>
-		</f:widget.paginate>
-		<!--</table>-->
-
-		<f:link.action action="new">New Projet</f:link.action>
-	</f:section>
+<html data-namespace-typo3-fluid="true" xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+    <f:layout name="Default"/>
+    This Template is responsible for creating a table of domain objects.
+    
+    	If you modify this template, do not forget to change the overwrite settings
+    	in /Configuration/ExtensionBuilder/settings.yaml:
+    	  Resources:
+    		Private:
+    		  Templates:
+    			List.html: keep
+    
+    	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+    <f:section name="content">
+        <h1>Liste des projets</h1>
+        <f:flashMessages/>
+        <f:widget.paginate as="paginatedProjects" configuration="{itemsPerPage: 6, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}" objects="{projects}">
+            <div class="row">
+                <f:for as="project" each="{paginatedProjects}">
+                    <div class="col-md-4 col-sm-6">
+                        <f:link.action action="show" arguments="{project : project}">
+                            <div class="card m-3 p-3 bg-light">
+                                <h2 class="text-center text-primary">
+                                    {project.title}
+                                </h2>
+                                <f:if condition="{project.photo}">
+                                    <f:image image="{project.photo}" maxHeight="100" treatIdAsReference="1" width="100c"/>
+                                </f:if>
+                                <div class="row">
+                                    <div class="col-12 col-lg-6 text-center">
+                                        <span>Date de début</span>
+                                        <span class="badge badge-info rounded">
+                                            {project.dateStart -> f:format.date()}</span>
+                                    </div>
+                                    <div class="col-12 col-lg-6 text-center">
+                                        <span>Date de fin</span>
+                                        <span class="badge badge-secondary rounded">
+                                            {project.dateEnd -> f:format.date()}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:link.action>
+                    </div>
+                </f:for>
+            </div>
+        </f:widget.paginate>
+    </f:section>
 </html>

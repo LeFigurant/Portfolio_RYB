@@ -8,11 +8,10 @@ namespace BYR\PortfolioByr\Domain\Repository;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2019 Julien VITTE <vitte.julien@gmail.com>
- *           Louis Réjou <lrejou@u-bordeaux.fr>
- *           Arthur Cargnelli <arthur.cargnelli@etu.u-bordeaux.fr>
- *           Arthur Derichard <aderichard@u-bordeaux.fr>
- *           Sophie Candau <scandau@u-bordeaux.fr>
+ * (c) 2019 Julien VITTE <vitte.julien@gmail.com>
+ *           Yoann Singer <yoann.singer@etu.u-bordeaux.fr>
+ *           Raphael Arrayago <raphael.arrayago@etu.u-bordeaux.fr>
+ *           Benjamin Jusserand <benjamin.jusserand@etu.u-bordeaux.fr>
  *
  ***/
 
